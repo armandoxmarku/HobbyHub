@@ -7,7 +7,7 @@ public class Login
 
    
     [Required]
-    [EmailAddress]
+
 
     public string LoginUsername{ get; set; }    
     
