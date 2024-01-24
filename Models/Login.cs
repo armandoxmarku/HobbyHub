@@ -7,8 +7,6 @@ public class Login
 
    
     [Required]
-
-
     public string LoginUsername{ get; set; }    
     
     [Required]
