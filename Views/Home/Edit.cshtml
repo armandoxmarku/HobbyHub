@@ -1,0 +1,33 @@
+@using HobbyHub.Models
+@model Hobby
+
+@{
+ViewData["Title"] = "Edit Hobby";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Edit a Hobby</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+
+            <form asp-action="HobbyUpdate" asp-route-hobbyId=" @Model.HobbyId" method="post">
+                <div class="form-group">
+                    <span asp-validation-for="Name"></span>
+                    <label asp-for="Name">Name:</label>
+                    <input type="text" class="form-control" asp-for="Name" placeholder="">
+                </div>
+                <div class="form-group">
+                    <span asp-validation-for="Description"></span>
+                    <label asp-for="Description">Description:</label>
+                    <textarea class="form-control" id="" rows="3" asp-for="Description"
+                        placeholder="Description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+

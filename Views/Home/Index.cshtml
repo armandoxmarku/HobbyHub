@@ -1,0 +1,83 @@
+﻿@using HobbyHub.Models
+@model Hobby
+
+@{
+    ViewData["Title"] = "Hobby Hub";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hobbies</h1>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Enthusiasts</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Hobby hobby in ViewBag.AllHobbies)
+                {
+                    <tr>
+                        <td><a href="HobbyDetails/@hobby.HobbyId">@hobby.Name</a></td>
+                        <td>@hobby.associations.Count()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <div class="border p-3 border-4 bg-light rounded">
+            <p class="h5">Top Hobby(ies) for Novices</p>
+            @if (ViewBag.topNoviceHobbies.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var topHobby in ViewBag.topNoviceHobbies)
+                    {
+                        <li class="list-group-item">@topHobby</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">--no enthusiasts at this proficiency level yet!--</p>
+            }
+
+            <p class="h5 mt-3">Top Hobby(ies) for Intermediates</p>
+            @if (ViewBag.topIntermediateHobbies.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var topHobby in ViewBag.topIntermediateHobbies)
+                    {
+                        <li class="list-group-item">@topHobby</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">--no enthusiasts at this proficiency level yet!--</p>
+            }
+
+            <p class="h5 mt-3">Top Hobby(ies) for Experts</p>
+            @if (ViewBag.topExpertHobbies.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var topHobby in ViewBag.topExpertHobbies)
+                    {
+                        <li class="list-group-item">@topHobby</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">--no enthusiasts at this proficiency level yet!--</p>
+            }
+        </div>
+    </div>
+</div>
+
+<a href="AddHobby" class="btn btn-outline-primary footer-button">Create a hobby</a>
